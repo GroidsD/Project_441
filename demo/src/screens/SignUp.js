@@ -43,7 +43,7 @@ const SignUp = ({ navigation }) => {
     <View>
       <View style={{ marginBottom: 20 }}>
         <Image style={styles.imgLogin2} source={require('../images/logo1.jpg')} />
-        <Text style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>THỨC COFFEE</Text>
+        <Text style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>WAKEUP COFFEE</Text>
       </View>
       <View style={{ marginLeft: 10, marginRight: 10 }}>
         <Text style={{ color: 'black', fontSize: 20, marginBottom: 20 }}>Sign Up</Text>

@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// Initialize the cart
+const cart = [];
 // Middleware to parse JSON data
 app.use(express.json());
 
@@ -21,11 +23,11 @@ const products = [
         "region": "Central America",
         "weight": 500,
         "flavor_profile": ["Dark Chocolate", "Black Cherry"],
-        "grind_option": ["Food","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Food", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 3,
         "image_url": "http://10.0.2.2:3000/images/pic1.png",
         "category": "Drink",
-       	"rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -38,11 +40,11 @@ const products = [
         "region": "Africa",
         "weight": 500,
         "flavor_profile": ["Citrus"],
-        "grind_option": ["Food","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Food", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic2.png",
         "category": "Drink",
-        "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -55,11 +57,11 @@ const products = [
         "region": "South America",
         "weight": 500,
         "flavor_profile": ["Toasted Nuts", "Caramel"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic3.png",
         "category": "Drink",
-       "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -72,11 +74,11 @@ const products = [
         "region": "South America",
         "weight": 500,
         "flavor_profile": ["Chocolate", "Caramel", "Fruit"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic4.png",
         "category": "Drink",
-       "rate":0,
+        "rate": 0,
         "numVoted": 0
 
     },
@@ -90,11 +92,11 @@ const products = [
         "region": "Ethiopia",
         "weight": 500,
         "flavor_profile": ["Jasmine", "Bergamot"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 1,
         "image_url": "http://10.0.2.2:3000/images/pic5.png",
         "category": "Drink",
-       "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -107,11 +109,11 @@ const products = [
         "region": "Indonesia",
         "weight": 500,
         "flavor_profile": ["Earthy", "Rich"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 3,
         "image_url": "http://10.0.2.2:3000/images/pic6.png",
         "category": "Drink",
-        "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -124,11 +126,11 @@ const products = [
         "region": "France",
         "weight": 500,
         "flavor_profile": ["Smoky", "Bold"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 4,
         "image_url": "http://10.0.2.2:3000/images/pic7.png",
         "category": "Drink",
-        "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -141,11 +143,11 @@ const products = [
         "region": "USA",
         "weight": 500,
         "flavor_profile": ["Vanilla", "Hazelnut"],
-        "grind_option": ["Food","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Food", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic8.png",
         "category": "Drink",
-      "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -158,11 +160,11 @@ const products = [
         "region": "USA",
         "weight": 500,
         "flavor_profile": ["Cinnamon", "Spices"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic9.png",
         "category": "Drink",
-       "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -175,11 +177,11 @@ const products = [
         "region": "Yemen & Indonesia",
         "weight": 500,
         "flavor_profile": ["Chocolate", "Rich"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 3,
         "image_url": "http://10.0.2.2:3000/images/pic10.png",
         "category": "Drink",
-       "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -192,12 +194,12 @@ const products = [
         "region": "USA",
         "weight": 500,
         "flavor_profile": ["Smooth", "Mellow"],
-        "grind_option": ["Drink","Coarse Grind"],
+        "grind_option": ["Drink", "Coarse Grind"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic11.png",
-         "category": "Drink",
-         "rate":0,
-         "numVoted": 0
+        "category": "Drink",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68k",
@@ -209,11 +211,11 @@ const products = [
         "region": "Brazil",
         "weight": 500,
         "flavor_profile": ["Rich", "Smooth"],
-        "grind_option": ["Drink","Whole Bean", "Cafetiere", "Filter", "Espresso"],
+        "grind_option": ["Drink", "Whole Bean", "Cafetiere", "Filter", "Espresso"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic12.png",
         "category": "Drink",
-        "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -226,11 +228,11 @@ const products = [
         "region": "Italia",
         "weight": 600,
         "flavor_profile": ["Delicious", "Flavorful"],
-        "grind_option": ["Food","Seafood Pizza", "Oringinal Pizza", "Spicy Pizza", "Cheese Pizza"],
+        "grind_option": ["Food", "Seafood Pizza", "Oringinal Pizza", "Spicy Pizza", "Cheese Pizza"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic13.png",
         "category": "Pizza",
-        "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -243,11 +245,11 @@ const products = [
         "region": "US",
         "weight": 150,
         "flavor_profile": ["Delicious", "BigSize"],
-        "grind_option": ["Food","Chicken Hamburger", "Oringinal Hamburger", "Beef Hamburger", "Cheese Hamburger"],
+        "grind_option": ["Food", "Chicken Hamburger", "Oringinal Hamburger", "Beef Hamburger", "Cheese Hamburger"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic14.png",
         "category": "Food",
-       "rate":0,
+        "rate": 0,
         "numVoted": 0
     },
     {
@@ -260,12 +262,12 @@ const products = [
         "region": "VietNam",
         "weight": 50,
         "flavor_profile": ["Delicious", "Sweety"],
-        "grind_option": ["Food","Bumpy Cake", "Sand Cake", "Plain Cake", "Chocolate Cake"],
+        "grind_option": ["Food", "Bumpy Cake", "Sand Cake", "Plain Cake", "Chocolate Cake"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic15.png",
-         "category": "Food",
-         "rate":0,
-         "numVoted": 0
+        "category": "Food",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68o",
@@ -277,12 +279,12 @@ const products = [
         "region": "VietNam",
         "weight": 50,
         "flavor_profile": ["Delicious", "Spicy"],
-        "grind_option": ["Food","Original Banh Mi", "Roast Pork Banh Mi", "Beef Banh Mi", "Stick Banh Mi"],
+        "grind_option": ["Food", "Original Banh Mi", "Roast Pork Banh Mi", "Beef Banh Mi", "Stick Banh Mi"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic16.png",
-         "category": "Food",
-         "rate":0,
-         "numVoted": 0
+        "category": "Food",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68o",
@@ -294,12 +296,12 @@ const products = [
         "region": "VietNam",
         "weight": 200,
         "flavor_profile": ["Delicious", "Rich"],
-        "grind_option": ["Food","Original Pho", "Speacial Pho"],
+        "grind_option": ["Food", "Original Pho", "Speacial Pho"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic17.png",
-         "category": "Food",
-        "rate":0,
-         "numVoted": 0
+        "category": "Food",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68p",
@@ -311,12 +313,12 @@ const products = [
         "region": "Italia",
         "weight": 200,
         "flavor_profile": ["Rich", "Smooth"],
-        "grind_option": ["Food","Original Spagetti", "Speacial Spagetti"],
+        "grind_option": ["Food", "Original Spagetti", "Speacial Spagetti"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic18.png",
-         "category": "Food",
-        "rate":0,
-         "numVoted": 0
+        "category": "Food",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68q",
@@ -328,12 +330,12 @@ const products = [
         "region": "VietNam",
         "weight": 100,
         "flavor_profile": ["Fragrant", "Tasty"],
-        "grind_option": ["Food","Original Chicken", "Spicy Chicken","Fried Chicken(Fish Sauce)"],
+        "grind_option": ["Food", "Original Chicken", "Spicy Chicken", "Fried Chicken(Fish Sauce)"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic19.png",
-         "category": "Food",
-         "rate":0,
-         "numVoted": 0
+        "category": "Food",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68r",
@@ -345,12 +347,12 @@ const products = [
         "region": "UK",
         "weight": 500,
         "flavor_profile": ["Rich", "Delicious"],
-        "grind_option": ["Food","Original Pan Cake", "Strawberry Pan Cake","Honey Pan Cake"],
+        "grind_option": ["Food", "Original Pan Cake", "Strawberry Pan Cake", "Honey Pan Cake"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic20.png",
-         "category": "Food",
-        "rate":0,
-         "numVoted": 0
+        "category": "Food",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68s",
@@ -362,13 +364,13 @@ const products = [
         "region": "VietNam",
         "weight": 500,
         "flavor_profile": ["Sweety", "Gas"],
-        "grind_option": ["Drink","Original Pepsi"," No Sugar Pepsi"],
+        "grind_option": ["Drink", "Original Pepsi", " No Sugar Pepsi"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic21.png",
-         "category": "Beverages",
-        "rate":0,
-         "numVoted": 0
-    },{
+        "category": "Beverages",
+        "rate": 0,
+        "numVoted": 0
+    }, {
         "_id": "642d3d8719341833719cd68t",
         "id": 22,
         "name": "Coca-cola",
@@ -378,13 +380,13 @@ const products = [
         "region": "VietNam",
         "weight": 500,
         "flavor_profile": ["Sweety", "Gas"],
-        "grind_option": ["Drink","Coffee"," No Sugar Coca-cola"],
+        "grind_option": ["Drink", "Coffee", " No Sugar Coca-cola"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic22.png",
-         "category": "Beverages",
-        "rate":0,
-         "numVoted": 0
-    },{
+        "category": "Beverages",
+        "rate": 0,
+        "numVoted": 0
+    }, {
         "_id": "642d3d8719341833719cd68u",
         "id": 23,
         "name": "Bottled Water",
@@ -394,12 +396,12 @@ const products = [
         "region": "VietNam",
         "weight": 500,
         "flavor_profile": ["Fesher", "Gas"],
-        "grind_option": ["Drink","Aquafina Water","Biconsi Water"],
+        "grind_option": ["Drink", "Aquafina Water", "Biconsi Water"],
         "roast_level": 2,
         "image_url": "http://10.0.2.2:3000/images/pic23.png",
-         "category": "Beverages",
-         "rate":0,
-         "numVoted": 0
+        "category": "Beverages",
+        "rate": 0,
+        "numVoted": 0
     },
     {
         "_id": "642d3d8719341833719cd68v",
@@ -411,14 +413,14 @@ const products = [
         "region": "VietNam",
         "weight": 500,
         "flavor_profile": ["Fesher", "Gas"],
-        "grind_option": ["Drink","Original RedBull","Energy RedBull"],
+        "grind_option": ["Drink", "Original RedBull", "Energy RedBull"],
         "roast_level": 2,
-        "image_url": "http://10.0.2.2:3000/images/pic20.png",
-         "category": "Beverages",
-         "rate":0,
-         "numVoted": 0
+        "image_url": "http://10.0.2.2:3000/images/pic24.png",
+        "category": "Beverages",
+        "rate": 0,
+        "numVoted": 0
     },
-    
+
 ];
 
 // User data
@@ -426,17 +428,17 @@ const users = [
     {
         username: 'user1',
         password: 'password1',
-	phone: '0123456789',
-	gmail: 'user1@gmail.com',
-	address: '123 Thu Dau Mot, Binh Duong',
-	avatar_url: 'http://10.0.2.2:3000/images/avatar.jpg'
+        phone: '0123456789',
+        gmail: 'user1@gmail.com',
+        address: '123 Thu Dau Mot, Binh Duong',
+        avatar_url: 'http://10.0.2.2:3000/images/avatar.jpg'
     },
     {
         username: 'user2',
         password: 'password2',
-	phone: '0987654321',
-	gmail: 'user2@gmail.com',
-	address: '789 Ben Cat, Binh Duong'
+        phone: '0987654321',
+        gmail: 'user2@gmail.com',
+        address: '789 Ben Cat, Binh Duong'
     }
 ];
 
@@ -477,7 +479,7 @@ const blogs = [
 ];
 
 // Orders data
-const orders = [];
+let orders = [];
 
 // Route to get all products
 app.get('/api/products', (req, res) => {
@@ -522,7 +524,7 @@ app.get('/api/cart', (req, res) => {
 
 // Route to remove a product from the cart
 app.delete('/api/cart/:productId', (req, res) => {
- const productId = req.params.productId;
+    const productId = req.params.productId;
     const index = cart.findIndex(item => item.productId === productId);
 
     if (index === -1) {
@@ -533,36 +535,99 @@ app.delete('/api/cart/:productId', (req, res) => {
     res.json({ message: 'Product removed from cart!', cart });
 });
 
-// Route to handle checkout
+
+
+
+
+app.post('/api/orders', (req, res) => {
+    const { productId, productName, productPrice, image_url } = req.body;
+    // Validate input
+    if (!productId || !productName || !productPrice) {
+        return res.status(400).send('Product ID, name, and price are required.');
+    }
+    // Create a new order object
+    const newOrder = {
+        id: orders.length + 1, // Simple ID generation
+        productId,
+        productName,
+        productPrice,
+        date: new Date(),
+        image_url,
+    };
+    // Add the new order to the orders array (this represents the cart)
+    orders.push(newOrder); // Don't clear the orders here anymore.
+    console.log("check orther pid", productId);
+
+    res.status(201).json({ message: 'Order created successfully!', order: newOrder });
+});
+
+let historyOrders = [];
 app.post('/api/checkout', (req, res) => {
+
     const orderData = req.body;
+    console.log(orderData);
 
     // Validate input
     if (!Array.isArray(orderData) || orderData.length === 0) {
         return res.status(400).send('Order data is required.');
     }
 
+    // Check if each order has the necessary properties
+    if (!orderData.every(order => order.id && order.quantity)) {
+        return res.status(400).send('Each order must have id and quantity.');
+    }
+
     // Process each order
-    orderData.forEach(order => {
-        const { id, quantity } = order;
-        const product = products.find(p => p.id === id);
+    const newOrders = orderData.map(order => {
+        const { productId, quantity } = order;
+        const product = products.find(p => p.id === productId);
 
         if (product) {
-            const newOrder = {
-                id: orders.length + 1,
+            return {
+                id: orders.length, // Create new order ID
                 productId: product.id,
                 productName: product.name,
                 productPrice: product.price,
                 quantity,
-                totalPrice: (product.price * quantity).toFixed(2),
+                totalPrice: (product.price * quantity).toFixed(2), // Calculate total price for item
                 date: new Date(),
-                image_url: product.image_url,
             };
-            orders.push(newOrder);
+        } else {
+            return null; // Return null if product not found
         }
-    });
+    }).filter(order => order !== null); // Remove invalid orders
 
-    res.status(201).json({ message: 'Checkout successful!', orders });
+    // If no valid orders were created, return an error
+    if (newOrders.length === 0) {
+        return res.status(400).send('No valid products found for the given order IDs.');
+    }
+
+
+
+    // Calculate total price for the entire order
+    const totalOrderPrice = newOrders.reduce((total, order) => total + parseFloat(order.totalPrice), 0).toFixed(2);
+    // // Add new orders to the history (or database)
+    // historyOrders.push(...newOrders);
+    // Add new orders to the history (or database)
+    const orderHistory = {
+        orderId: historyOrders.length + 1,  // Create a new unique order ID for the history
+        orders: newOrders,
+        totalPrice: totalOrderPrice,
+        date: new Date(),
+    };
+    historyOrders.push(orderHistory);
+
+    console.log("check his", orderHistory);
+
+
+
+    orders = [];
+    res.status(201).json({ message: 'Checkout successful, cart is cleared!', totalOrderPrice, historyOrders });
+});
+
+// Route to get all checkout history
+app.get('/api/checkout', (req, res) => {
+    res.json(historyOrders); // Return the history of orders
 });
 
 
@@ -572,6 +637,7 @@ app.get('/api/blogs', (req, res) => {
 });
 
 const jwt = require('jsonwebtoken'); // Import jsonwebtoken
+const { log } = require('console');
 
 // Secret key for signing the JWT
 const JWT_SECRET = 'abcxyz123456';
@@ -605,8 +671,8 @@ app.post('/api/signup', (req, res) => {
     }
 
     // Check if the username already exists
-    const existingUser  = users.find(u => u.username === username);
-    if (existingUser ) {
+    const existingUser = users.find(u => u.username === username);
+    if (existingUser) {
         return res.status(409).send('Username already exists.');
     }
 
@@ -615,31 +681,8 @@ app.post('/api/signup', (req, res) => {
     res.status(201).json({ message: 'User  registered successfully!' });
 });
 
-// Route to handle creating an order
-app.post('/api/orders', (req, res) => {
-    const { productId, productName, productPrice, image_url } = req.body;
 
-    // Validate input
-    if (!productId || !productName || !productPrice) {
-        return res.status(400).send('Product ID, name, and price are required.');
-    }
-
-    // Create a new order object
-    const newOrder = {
-        id: orders.length + 1, // Simple ID generation
-        productId,
-        productName,
-        productPrice,
-        date: new Date(),
-	image_url,
-    };
-
-    // Add the new order to the orders array
-    orders.push(newOrder);
-    res.status(201).json({ message: 'Order created successfully!', order: newOrder });
-});
-
-// Route to get all orders
+// // Route to get all orders
 app.get('/api/orders', (req, res) => {
     res.json(orders);
 });
@@ -721,3 +764,6 @@ app.post('/api/blogs/feedback', (req, res) => {
         res.status(201).json({ message: 'New blog entry created', blog: newBlog });
     }
 });
+
+
+

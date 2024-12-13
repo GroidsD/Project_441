@@ -36,7 +36,7 @@ const ShowProduct = ({ route, navigation }) => {
                             style={{ width: '45%', marginBottom: 20 }}
                         >
                             <Image 
-                                style={{ width: '100%', height: 150, borderRadius: 10 }} 
+                                style={{ width: '100%', height: 200, borderRadius: 10 }} 
                                 source={{ uri: product.image_url }} 
                             />
                             <Text style={{ fontWeight: 'bold' }}>{product.name}</Text>

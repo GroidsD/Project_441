@@ -6,7 +6,7 @@ const ProductDetail = ({ route, navigation }) => {
 
     const handleAdd = async () => {
         try {
-            const response = await fetch('http://10.0.2.2:3000/api/orders', { // Change to your API URL
+            const response = await fetch('http://10.0.2.2:3000/api/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ const ProductDetail = ({ route, navigation }) => {
                     productName: product.name,
                     productPrice: product.price,
                     image_url: product.image_url,
-                    quantity: 1 // Default quantity is 1
+                    quantity: 1
                 }),
             });
 

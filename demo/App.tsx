@@ -12,7 +12,9 @@ import Orders from './src/screens/Orders';
 import Blog from './src/screens/Blog';
 import Profile from './src/screens/Profile';
 import ShowProduct from './src/screens/ShowProduct';
-import Rewards from './src/screens/Rewards';
+import FeedBack from './src/screens/FeedBack';
+import Notification from './src/screens/Notification';
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -60,8 +62,8 @@ const App = () => {
           options={{headerShown: true}}
         />
           <Stack.Screen 
-          name="Rewards" 
-          component={Rewards}
+          name="FeedBack" 
+          component={FeedBack}
           options={{headerShown: true}}
         />
         <Stack.Screen 
@@ -72,6 +74,11 @@ const App = () => {
         <Stack.Screen 
           name="ShowProduct" 
           component={ShowProduct}
+          options={{headerShown: true}}
+        />
+        <Stack.Screen 
+          name="Notification" 
+          component={Notification}
           options={{headerShown: true}}
         />
       </Stack.Navigator>

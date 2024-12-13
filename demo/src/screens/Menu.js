@@ -13,15 +13,15 @@ const Menu = ({onClose, navigation}) => {
         left: -20,
         zIndex: 99,
         backgroundColor: 'white',
-        width: 220,
+        width: 250,
         height: '100%',
         padding: 15,
       }}>
       <ScrollView>
         <Button
           onPress={onClose}
-          style={{position: 'absolute', top: 0, right: 0, fontWeight: 'bold'}}>
-          <Text>X</Text>
+          style={{position: 'absolute', top: 5, right: 0, fontWeight: 'bold',maxWidth:33.5}}>
+          <Text style={{color:'#04764e',fontWeight:'bold',fontSize:15,marginTop: 20}}>X</Text>
         </Button>
         <View
           style={{
@@ -36,8 +36,8 @@ const Menu = ({onClose, navigation}) => {
             ]}
             source={require('../images/logo1.jpg')}
           />
-          <Text style={{color: '#04764e', fontWeight: 'bold', marginLeft: -30}}>
-            Thức Coffee
+          <Text style={{color: '#04764e', fontWeight: 'bold',fontSize:20, marginLeft: -30}}>
+            WakeUp Cafe
           </Text>
         </View>
         <View>
@@ -66,22 +66,16 @@ const Menu = ({onClose, navigation}) => {
               <Text>Blog</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Alert.alert('Notifications')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
             <View style={{flexDirection: 'row', marginBottom: 35}}>
               <Icon name="notifications" size={18} />
-              <Text>Notifications</Text>
+              <Text>Notification</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Alert.alert('Store Location')}>
-            <View style={{flexDirection: 'row', marginBottom: 35}}>
-              <Icon name="location-on" size={18} />
-              <Text>Store Location</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Rewards')}>
+          <TouchableOpacity onPress={() => navigation.navigate('FeedBack')}>
             <View style={{flexDirection: 'row', marginBottom: 35}}>
               <Icon name="grade" size={18} />
-              <Text>Rewards</Text>
+              <Text>Feed Back</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>

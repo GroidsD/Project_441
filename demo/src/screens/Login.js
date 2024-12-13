@@ -7,7 +7,7 @@ const Login = ({navigation}) => {
   return (
     <View>
         <Image style={styles.imgLogin1} source={require('../images/logo1.jpg')} />
-        <Text style={[styles.textLogin, {marginBottom: 20}]}>Morning begins with Thức Coffee</Text>
+        <Text style={[styles.textLogin, {marginBottom: 20}]}>Morning begins with WakeUp Coffee</Text>
         <View>
         <TouchableOpacity style={styles.btnLogin} onPress={() => navigation.navigate('SignIn')}>
           <Image source={require('../images/inbox.png')}/>
