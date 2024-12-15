@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker'; // Import the Picker
 import { useNavigation } from '@react-navigation/native';
-import { red400 } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+
 
 const FeedBack = () => {
   const navigation = useNavigation();
@@ -167,17 +167,7 @@ const FeedBack = () => {
           </TouchableOpacity>
         </View>
       )}
-      {/* <ScrollView>
-      <View>
-        <Text style={styles.blogTitle}>Blog Posts</Text>
-        {blogPosts.map((blog) => (
-          <View key={blog.id} style={styles.blogPost}>
-            <Text style={styles.blogPostTitle}>{blog.title}</Text>
-            <Text>{blog.script}</Text>
-          </View>
-        ))}
-      </View>
-      </ScrollView> */}
+     
     </View>
   );
 };

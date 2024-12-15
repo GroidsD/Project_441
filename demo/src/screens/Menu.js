@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import {Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styles from '../style'; // Điều chỉnh đường dẫn nếu cần
+import styles from '../style'; 
 
 const Menu = ({onClose, navigation}) => {
   return (

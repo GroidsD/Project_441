@@ -451,8 +451,8 @@ const blogs = [
         image_url: "http://10.0.2.2:3000/images/pic21.png",
         tags: ['Coffee', 'Espresso', 'Cold brew'],
         script: 'The coffee is so good! Need to try it.',
-        numRatings: 1, // Khởi tạo số lượng đánh giá
-        averageRating: 3 // Khởi tạo điểm trung bình
+        numRatings: 1, 
+        averageRating: 3 
     },
     {
         id: 2,
@@ -462,8 +462,8 @@ const blogs = [
         image_url: "http://10.0.2.2:3000/images/pic20.png",
         tags: ['Black Coffee', 'Cappuccino'],
         script: 'Very good for me when I worked 10 hours a day!',
-        numRatings: 1, // Khởi tạo số lượng đánh giá
-        averageRating: 5 // Khởi tạo điểm trung bình
+        numRatings: 1, 
+        averageRating: 5 
     },
     {
         id: 3,
@@ -473,8 +473,8 @@ const blogs = [
         image_url: "http://10.0.2.2:3000/images/pizza.png",
         tags: ['Food'],
         script: 'Very delicious!',
-        numRatings: 1, // Khởi tạo số lượng đánh giá
-        averageRating: 4 // Khởi tạo điểm trung bình
+        numRatings: 1, 
+        averageRating: 4 
     },
 ];
 
@@ -555,7 +555,7 @@ app.post('/api/orders', (req, res) => {
         image_url,
     };
     // Add the new order to the orders array (this represents the cart)
-    orders.push(newOrder); // Don't clear the orders here anymore.
+    orders.push(newOrder); 
     console.log("check orther pid", productId);
 
     res.status(201).json({ message: 'Order created successfully!', order: newOrder });
@@ -565,7 +565,7 @@ let historyOrders = [];
 app.post('/api/checkout', (req, res) => {
 
     const orderData = req.body;
-    console.log(orderData);
+    // console.log(orderData);
 
     // Validate input
     if (!Array.isArray(orderData) || orderData.length === 0) {
@@ -606,9 +606,7 @@ app.post('/api/checkout', (req, res) => {
 
     // Calculate total price for the entire order
     const totalOrderPrice = newOrders.reduce((total, order) => total + parseFloat(order.totalPrice), 0).toFixed(2);
-    // // Add new orders to the history (or database)
-    // historyOrders.push(...newOrders);
-    // Add new orders to the history (or database)
+
     const orderHistory = {
         orderId: historyOrders.length + 1,  // Create a new unique order ID for the history
         orders: newOrders,
